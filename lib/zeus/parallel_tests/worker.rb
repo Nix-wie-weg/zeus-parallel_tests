@@ -20,9 +20,10 @@ module Zeus
       end
 
       def spawn
-        system %(zeus parallel_#{@suite}_worker #{parallel_tests_attributes})
+        success =
+          system %(zeus parallel_#{@suite}_worker #{parallel_tests_attributes})
         args_file.unlink
-        $CHILD_STATUS.to_i
+        success ? 0 : 1
       end
 
       private

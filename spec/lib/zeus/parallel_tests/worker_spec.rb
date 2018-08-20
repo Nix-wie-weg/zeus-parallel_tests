@@ -52,8 +52,7 @@ describe Zeus::ParallelTests::Worker do
     end
 
     it 'returns exit code' do
-      system 'true'
-      expect(worker).to receive(:system) { allow($CHILD_STATUS).to receive_messages(to_i: 1) }
+      expect(worker).to receive(:system) { false }
       expect(subject).to eq(1)
     end
   end
